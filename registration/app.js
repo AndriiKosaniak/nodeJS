@@ -44,7 +44,7 @@ app.get('/account', (req, res) => {
 
     fs.readFile(pathToFile, ((err, data) => {
         if(err){
-            console.log(err);
+            res.redirect('/error');
         }
         const users = JSON.parse(data);
         return res.render('account', {thisUser, users, isLogged});
@@ -61,7 +61,7 @@ app.post('/signup',  (req, res) => {
 
     fs.readFile(pathToFile, ((err, data) => {
         if(err){
-            console.log(err)
+            res.redirect('/error');
         }
 
         const users = JSON.parse(data);
@@ -74,7 +74,7 @@ app.post('/signup',  (req, res) => {
 
             fs.writeFileSync(pathToFile, JSON.stringify(users), err => {
                 if (err) {
-                    console.log(err);
+                    res.redirect('/error');
                 }
             });
 
@@ -91,7 +91,7 @@ app.post('/signup',  (req, res) => {
 app.post('/login', ((req, res) => {
     fs.readFile(pathToFile, ((err, data) => {
         if (err) {
-            console.log(err);
+            res.redirect('/error');
         }
 
         const {username, password} = req.body;
