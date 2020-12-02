@@ -1,4 +1,4 @@
-const {usersArray, isLogged, thisUser, methods} = require('../../dataBase/users.database');
+const {usersArray, isLogged, thisUser, methods} = require('../../dataBase/users.json');
 const authController = require("../../controllers/auth/auth.controller");
 const checkUserCredentials = require('../../middlewares/check-user-credentials');
 const checkEmailAvailabilty = require('../../middlewares/check-email-availability');

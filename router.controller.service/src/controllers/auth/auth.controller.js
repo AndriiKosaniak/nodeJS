@@ -1,20 +1,31 @@
 const authService = require('../../services/auth/auth.service')
-const {thisUser} = require('../../dataBase/users.database');
-
-const {pathToFile} = require('../../constants')
 
 module.exports = {
 
     signupUser: (req, res) => {
-        authService.setUser(req.body);
+        try {
+            authService.setUser(req.body);
 
-        res.status(201).redirect('/users');
+            res.status(201).redirect('/users');
+        }
+        catch (error) {
+            res.json(error.message);
+        }
+
     },
 
-    authorizeUser: (req, res) => {
-        authService.loginUser(thisUser)
 
-        res.status(201).redirect('/users');
-}
+    authorizeUser: (req, res) => {
+        try {
+            console.log(req.login)
+            authService.loginUser(thisUser)
+
+            res.status(200).redirect('/users');
+        }
+        catch {error} {
+        res.json(error.message);
+        }
+    }
+
 
 };

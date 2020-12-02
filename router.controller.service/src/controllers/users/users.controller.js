@@ -1,5 +1,5 @@
 const {pathToFile} = require('../../constants');
-const {usersArray, isLogged, thisUser} = require('../../dataBase/users.database');
+const {usersArray, isLogged, thisUser} = require('../../dataBase/users.json');
 
 module.exports = {
     getUsers: (req, res) => {

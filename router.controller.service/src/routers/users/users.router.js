@@ -5,6 +5,10 @@ const {usersController} = require("../../controllers");
 
 const usersRouter = Router();
 
-usersRouter.get('/', usersController.getUsers);
+usersRouter.get('/', (req, res) => {
+    res.render('users');
+})
+
+usersRouter.post('/', usersController.getUsers);
 
 module.exports = usersRouter;

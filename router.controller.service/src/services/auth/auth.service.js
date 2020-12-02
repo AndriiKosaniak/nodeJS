@@ -1,19 +1,22 @@
-const {thisUser, isLogged, usersArray} = require('../../dataBase/users.database');
 const fs = require('fs-extra');
+
 const pathToFile = require("../../constants");
-const res = require("express");
+const dataBase = require('../../dataBase/users.json');
+
 
 const setUser = (user) => {
-    thisUser = user;
 
-    usersArray.push(thisUser);
+    dataBase.push(user);
+    fs.writeFileSync(pathToFile, JSON.stringify(dataBase), err => {
+        if (err) throw err;
+    });
 
 };
-const logoutUser = () => {
-    isLogged = false
+const logoutUser = (req, res) => {
+    req.login = false
 };
-const loginUser = () => {
-    isLogged = true
+const loginUser = (req, res) => {
+    req.login = true
 };
 
 module.exports = {
