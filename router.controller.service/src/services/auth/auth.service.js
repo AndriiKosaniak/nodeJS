@@ -13,15 +13,5 @@ const setUser = (user) => {
     });
 
 };
-const logoutUser = (req, res) => {
-    req.login = false
-};
-const loginUser = (req, res) => {
-    req.login = true
-};
 
-module.exports = {
-        setUser,
-        logoutUser,
-        loginUser
-};
+module.exports = setUser;

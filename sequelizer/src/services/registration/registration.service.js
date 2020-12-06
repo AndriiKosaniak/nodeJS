@@ -1,8 +1,10 @@
 const {UserModel} = require("../../dataBase/models");
 
+const registrationService = {
+    setUser: (user) => {
+        return UserModel.create(user)
+    }
+}
 
-const setUser = (user) => {
-         return UserModel.create(user)
-    };
 
-module.exports = {setUser};
+module.exports = registrationService;

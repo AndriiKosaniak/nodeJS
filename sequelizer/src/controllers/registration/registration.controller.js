@@ -1,8 +1,8 @@
-const registrationService = require('../../services/registration/registration.service');
+const {registrationService} = require('../../services/registration/registration.service');
 
 const registrationController = {
 
-    registerUser:async (req, res) => {
+    registerUser: async (req, res) => {
         try {
            const user = await registrationService.setUser(req.body);
 

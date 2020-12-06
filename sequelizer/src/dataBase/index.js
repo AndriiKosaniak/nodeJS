@@ -1,6 +1,6 @@
 const {Sequelize} = require('sequelize');
 
-module.exports.sequelize = new Sequelize('dbname',
+module.exports.sequelize = new Sequelize('users_cars',
   'root',
   'root', {
     host: 'localhost',

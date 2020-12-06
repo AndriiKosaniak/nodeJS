@@ -1,4 +1,4 @@
-const registrationController = require("../../controllers/");
+const {registrationController} = require("../../controllers/");
 const checkEmailAvailability = require('../../middlewares/check-email-availability');
 
 const {Router} = require('express');

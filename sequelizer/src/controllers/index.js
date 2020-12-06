@@ -1,1 +1,1 @@
-module.exports.registrationController = require('registration');
+module.exports.registrationController = require('./registration');
