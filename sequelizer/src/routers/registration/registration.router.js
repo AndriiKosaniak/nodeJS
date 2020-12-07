@@ -5,6 +5,6 @@ const {Router} = require('express');
 
 const registrationRouter = Router();
 
-registrationRouter.post('/', checkEmailAvailability, registrationController.registerUser());
+registrationRouter.post('/', checkEmailAvailability, registrationController.registerUser);
 
 module.exports = registrationRouter;

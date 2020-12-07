@@ -1,29 +1,32 @@
-const {Model, DataTypes} = require('sequelize');
-
-const {sequelize} = require("../index");
-
-class UserModel extends Model {
-}
-
-UserModel.init({
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
+module.exports = (client, DataTypes) => {
+  const User = client.define(
+      'User',
+      {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
-}, {sequelize})
+      {
+        tableName: 'users',
+        timestamps: false
+      }
+  );
 
-module.exports = UserModel;
+  return User;
+};

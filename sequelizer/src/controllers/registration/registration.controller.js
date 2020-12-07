@@ -1,10 +1,10 @@
-const {registrationService} = require('../../services/registration/registration.service');
+const {userService} = require('../../services')
 
 const registrationController = {
 
     registerUser: async (req, res) => {
         try {
-           const user = await registrationService.setUser(req.body);
+           const user = await userService.createUser(req.body);
 
             res.json(user)
         }

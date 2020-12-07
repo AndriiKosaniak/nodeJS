@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63916e29-10bf-4600-bea2-98dd8d3bbd07" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,10 +15,18 @@
     </option>
   </component>
   <component name="ProjectId" id="1l3vjkcfSq9UTSm1Rbr7zn5obo4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="14.11.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/controllers/auth" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.18.3" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.19.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -29,32 +36,36 @@
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/controllers/auth" />
-      <recent name="$PROJECT_DIR$/src/routers/apiRouter" />
-      <recent name="$PROJECT_DIR$/src/routers/auth" />
-      <recent name="$PROJECT_DIR$/src/routers/users" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/services/users" />
       <recent name="$PROJECT_DIR$/src/controllers/users" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/services" />
+      <recent name="$PROJECT_DIR$/src/controllers" />
+      <recent name="$PROJECT_DIR$/src/controllers/auth" />
+      <recent name="$PROJECT_DIR$/src/routers/apiRouter" />
+      <recent name="$PROJECT_DIR$/src/routers/auth" />
+    </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -66,10 +77,38 @@
       <option name="presentableId" value="Default" />
       <updated>1606838726734</updated>
       <workItem from="1606838727971" duration="5078000" />
+      <workItem from="1607246329682" duration="743000" />
+      <workItem from="1607247203892" duration="20668000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="303" y="320" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607251762575">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="303" y="320" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1607251762575" />
+    <state width="844" height="265" key="GridCell.Tab.0.bottom" timestamp="1607304460419">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="844" height="265" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1607304460419" />
+    <state width="844" height="265" key="GridCell.Tab.0.center" timestamp="1607304460419">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="844" height="265" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1607304460419" />
+    <state width="844" height="265" key="GridCell.Tab.0.left" timestamp="1607304460418">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="844" height="265" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1607304460418" />
+    <state width="844" height="265" key="GridCell.Tab.0.right" timestamp="1607304460419">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="844" height="265" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1607304460419" />
+    <state x="341" y="150" key="SettingsEditor" timestamp="1607294689217">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="341" y="150" key="SettingsEditor/0.0.1680.1010@0.0.1680.1010" timestamp="1607294689217" />
   </component>
 </project>

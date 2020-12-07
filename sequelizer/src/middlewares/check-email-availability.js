@@ -1,17 +1,14 @@
+const {userService} = require('./../services/')
+const db = require('../dataBase').getInstance();
 
-
-const dataBase = require('../dataBase/');
-
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
     try {
         const {email} = req.body;
+        const foundUser = await userService.getUserByEmail(email);
 
-
-            const resStatus = users.find(user => user.email === email);
-
-            if(resStatus){
-                throw new Error('This email is already taken');
-            }
+        if(foundUser[0]){
+            throw new Error('This email is already taken');
+        }
 
         next();
     }

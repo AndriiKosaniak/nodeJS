@@ -1,24 +1,36 @@
-const {Model, DataTypes} = require('sequelize');
+module.exports = (client, DataTypes) => {
+    const Car = client.define(
+        'Car',
+        {
+            id: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
+            model: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            user_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            }
+        },
+        {
+            tableName: 'cars',
+            timestamps: false
+        }
+    );
 
-const {sequelize} = require("../index");
+    const User = require('./User')(client, DataTypes);
 
-class CarModel extends Model {
+    Car.belongsTo(User, {
+        foreignKey: "user_id",
+        targetKey: "id",
+        as: 'user',
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
+    })
+
+    return Car;
 }
-
-CarModel.init({
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    }
-}, {sequelize})
-
-module.exports = CarModel;
