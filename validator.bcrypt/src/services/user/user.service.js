@@ -6,7 +6,9 @@ module.exports = {
     getUsers: () => UserModel.findAll(),
 
     getUserByParams: (params) => UserModel.findAll({
-        where: params
+        where: {
+            username: params
+        }
     }),
 
     getUserById: (id) => UserModel.findAll({

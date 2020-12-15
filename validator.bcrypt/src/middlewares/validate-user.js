@@ -1,17 +1,32 @@
-const {userValidator} = require('./../validators');
+const {userValidator, updateValidator} = require('./../validators');
 const {ErrorHandler} = require('./../errors');
 const {responseCodes: {BAD_REQUEST}} = require('./../configs')
 
-module.exports = (req, res, next) => {
-    try {
-        const {error} = userValidator.validate(req.body)
+module.exports = {
+    registrationValidator: async (req, res, next) => {
+        try {
+            const {error} = await userValidator.validate(req.body)
 
-        if(error){
-            throw new ErrorHandler(error.details[0].message, BAD_REQUEST)
+            if (error) {
+                throw new ErrorHandler(error.details[0].message, BAD_REQUEST)
+            }
+
+            next();
+        } catch (e) {
+            next(e)
         }
+    },
+    userUpdateValidator: async (req, res, next) => {
+        try {
+            const {error} = await updateValidator.validate(req.body)
 
-        next();
-    } catch (e) {
-        next(e)
+            if (error) {
+                throw new ErrorHandler(error.details[0].message, BAD_REQUEST)
+            }
+
+            next();
+        } catch (e) {
+            next(e)
+        }
     }
 }

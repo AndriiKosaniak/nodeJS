@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const {errors: {WRONG_USERNAME_OR_PASS}, ErrorHandler} = require('./../errors')
 
 module.exports = {
-    hash: (password) => bcrypt.hash(password, 25),
+    hash: (password) => bcrypt.hash(password, 10),
     compare: async (password, hash) => {
         const doesPasswordMatch = await bcrypt.compare(password, hash);
 
