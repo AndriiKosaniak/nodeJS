@@ -1,6 +1,6 @@
-const {authController} = require("../../controllers/");
-const {checkEmailAvailability, checkUserCredentials, validateUser} = require('../../middlewares/');
-const {Router} = require('express');
+const { Router } = require('express');
+const { authController } = require('../../controllers');
+const { checkEmailAvailability, checkUserCredentials, validateUser } = require('../../middlewares');
 
 const authRouter = Router();
 

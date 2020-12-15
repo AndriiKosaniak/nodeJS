@@ -1,6 +1,6 @@
-const {userService} = require('../../services');
+const { ErrorHandler } = require('../../errors');
+const { userService } = require('../../services');
 const { responseCodes } = require('../../configs');
-
 
 const userController = {
     getUsers: async (req, res, next) => {
@@ -8,36 +8,32 @@ const userController = {
             const users = await userService.getUsers();
 
             res.json(users);
-        }
-        catch (e) {
+        } catch (e) {
             next(e);
         }
     },
 
     getUserById: async (req, res, next) => {
         try {
-            const {id} = req.params;
+            const { id } = req.params;
 
             const user = await userService.getUserById(id);
 
             res.json(user);
-        }
-        catch (e) {
+        } catch (e) {
             next(e);
         }
-
     },
 
     updateUser: async (req, res, next) => {
         try {
-            const user = req.body;
-            const newData = req.query;
+            const { id } = req.params;
+            const newData = req.body;
 
-            await userService.updateUser(user, newData);
+            await userService.updateUser(id, newData);
 
-            res.status(responseCodes.OK);
-        }
-        catch (e) {
+            res.status(responseCodes.OK).json('Updated successfully');
+        } catch (e) {
             next(e);
         }
     },
@@ -49,8 +45,7 @@ const userController = {
             await userService.deleteUser(user);
 
             res.status(responseCodes.NOT_CONTENT);
-        }
-        catch (e) {
+        } catch (e) {
             next(e);
         }
     }

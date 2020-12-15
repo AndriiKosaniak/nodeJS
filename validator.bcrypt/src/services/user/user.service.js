@@ -1,26 +1,25 @@
-const UserModel = require('../../dataBase/models/User');
+const User = require('../../dataBase/models/User');
 
 module.exports = {
 
+    getUsers: () => User.findAll(),
 
-    getUsers: () => UserModel.findAll(),
-
-    getUserByParams: (params) => UserModel.findAll({
+    getUserByParams: (params) => User.findAll({
         where: {
             username: params
         }
     }),
 
-    getUserById: (id) => UserModel.findAll({
+    getUserById: (id) => User.findAll({
         where: id
     }),
 
-    updateUser: (user, newData) => UserModel.update(
-        {...newData},
-        {where: {...user}}
+    updateUser: (id, newData) => User.update(
+        { ...newData },
+        { where: { id } }
     ),
 
-    deleteUser: (user) => UserModel.destroy({
-        where: {...user}
+    deleteUser: (user) => User.destroy({
+        where: { ...user }
     })
 };

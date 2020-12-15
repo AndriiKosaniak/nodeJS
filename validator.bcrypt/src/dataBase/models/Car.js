@@ -1,10 +1,10 @@
-const {Model, DataTypes} = require('sequelize');
-const {sequelize} = require('../index');
+const { Model, DataTypes } = require('sequelize');
+const { sequelize } = require('../index');
 
-class CarModel extends Model {
+class Car extends Model {
 }
 
-CarModel.init({
+Car.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -17,13 +17,12 @@ CarModel.init({
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        foreignKey: true
+        foreignKey: true,
     }
-}, {sequelize});
+}, { sequelize });
 
-const UserModel = require('./User');
+const User = require('./User');
 
-CarModel.belongsTo(UserModel, { foreignKey: 'user_id' });
+Car.belongsTo(User, { foreignKey: 'user_id' });
 
-
-module.exports = CarModel;
+module.exports = Car;

@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const {errors: {WRONG_USERNAME_OR_PASS}, ErrorHandler} = require('./../errors')
+const { errors: { WRONG_USERNAME_OR_PASS }, ErrorHandler } = require('../errors');
 
 module.exports = {
     hash: (password) => bcrypt.hash(password, 10),
@@ -10,4 +10,4 @@ module.exports = {
             throw new ErrorHandler(WRONG_USERNAME_OR_PASS.message, WRONG_USERNAME_OR_PASS.code);
         }
     }
-}
+};
