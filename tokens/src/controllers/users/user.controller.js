@@ -1,6 +1,5 @@
-const { ErrorHandler } = require('../../errors');
 const { userService } = require('../../services');
-const { responseCodes } = require('../../configs');
+const { responseCodes: { OK, NOT_CONTENT } } = require('../../configs');
 
 const userController = {
     getUsers: async (req, res, next) => {
@@ -32,7 +31,7 @@ const userController = {
 
             await userService.updateUser(id, newData);
 
-            res.status(responseCodes.OK).json('Updated successfully');
+            res.status(OK).json('Updated successfully');
         } catch (e) {
             next(e);
         }
@@ -44,7 +43,7 @@ const userController = {
 
             await userService.deleteUser(user);
 
-            res.status(responseCodes.NOT_CONTENT);
+            res.status(NOT_CONTENT);
         } catch (e) {
             next(e);
         }

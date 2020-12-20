@@ -1,2 +1,5 @@
-module.exports.usersRouter = require('./users');
-module.exports.authRouter = require('./auth');
+module.exports = {
+    usersRouter: require('./users'),
+    authRouter: require('./auth'),
+    carsRouter: require('./cars')
+};

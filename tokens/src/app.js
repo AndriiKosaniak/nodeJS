@@ -1,6 +1,6 @@
 const express = require('express');
 require('dotenv').config();
-const { usersRouter, authRouter } = require('./routers');
+const { usersRouter, authRouter, carsRouter } = require('./routers');
 const { sequelize } = require('./dataBase/index');
 
 const { config: { APP_PORT } } = require('./configs');
@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/cars', carsRouter);
 
 app.use('*', (error, req, res, next) => {
     res.status(error.code || 500).json({
