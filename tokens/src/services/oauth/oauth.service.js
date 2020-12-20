@@ -6,10 +6,10 @@ module.exports = {
         OAuth.create(tokenPair);
     },
     getTokenWithUserByParams: (findObject) => {
-        OAuth.findOne({
-            where: findObject,
+        User.findOne({
             include: [{
-                model: User
+                model: OAuth,
+                where: findObject,
             }]
         });
 }

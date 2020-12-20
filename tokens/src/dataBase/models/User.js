@@ -25,4 +25,9 @@ User.init({
     }
 }, { sequelize });
 
+const OAuth = require('./OAuth');
+
+User.hasMany(OAuth, { foreignKey: 'user_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+
+
 module.exports = User;
