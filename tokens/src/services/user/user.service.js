@@ -2,7 +2,7 @@ const { User } = require('../../dataBase/models');
 
 module.exports = {
 
-    getUsers: () => User.findAll({ limit: 10 }),
+    getUsers: () => User.findAll(),
 
     getUserByParams: (params) => User.findAll({
         where: {
