@@ -12,5 +12,10 @@ module.exports = {
                 where: findObject,
             }]
         });
-}
+    },
+    deleteToken: (token) => {
+        OAuth.destroy({
+            where: token
+        });
+    }
 };

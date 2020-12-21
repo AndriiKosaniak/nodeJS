@@ -3,5 +3,6 @@ module.exports = {
     validateCar: require('./validate-car'),
     checkEmailAvailability: require('./check-email-availability'),
     checkUserCredentials: require('./check-user-credentials'),
-    checkAccessToken: require('./check-access-token')
+    checkAccessToken: require('./check-access-token'),
+    checkRefreshToken: require('./check-refresh-token')
 };

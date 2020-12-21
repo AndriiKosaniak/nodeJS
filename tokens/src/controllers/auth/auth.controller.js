@@ -1,5 +1,5 @@
 const { authService } = require('../../services');
-const { responseCodes } = require('../../configs');
+const { responseCodes: { OK, NOT_CONTENT } } = require('../../configs');
 const { tokenizer } = require('../../helpers');
 const { passwordHelper: { hash } } = require('../../helpers');
 const { oauthService } = require('../../services');
@@ -27,7 +27,32 @@ const authController = {
 
             await oauthService.createTokenPair({ user_id: id, ...token_pair });
 
-            await res.status(responseCodes.OK).json(req.user);
+            await res.status(OK).json(req.user);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    logoutUser: async (req, res, next) => {
+        try {
+            const token = req.get('Authorization');
+
+            await oauthService.deleteToken(token);
+
+            res.json(NOT_CONTENT);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    refreshToken: async (req, res, next) => {
+        try {
+            const token = req.get('Authorization');
+
+            await oauthService.deleteToken(token);
+
+            const token_pair = tokenizer();
+            await oauthService.createTokenPair({ user_id: req.user.id, ...token_pair });
         } catch (e) {
             next(e);
         }

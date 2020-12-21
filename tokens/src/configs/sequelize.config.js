@@ -1,5 +1,5 @@
 const {
-    DB_NAME, DB_USERNAME, DB_PASSWORD, HOST
+    DB_DIALECT, DB_NAME, DB_USERNAME, DB_PASSWORD, HOST
 } = require('./config');
 
 module.exports = {
@@ -8,6 +8,6 @@ module.exports = {
         password: DB_PASSWORD,
         database: DB_NAME,
         host: HOST,
-        dialect: 'mysql'
+        dialect: DB_DIALECT
     }
 };

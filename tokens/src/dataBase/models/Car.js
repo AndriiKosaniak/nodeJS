@@ -1,5 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const { sequelize } = require('../index');
+const {
+    config: {
+        USER_TABLE, USER_MODEL, KEY_ID, FOREIGN_USER_ID
+    }
+} = require('../../configs');
 
 class Car extends Model {
 }
@@ -19,15 +24,15 @@ Car.init({
         allowNull: false,
         foreignKey: true,
         reference: {
-            model: 'Users',
-            as: 'User',
-            key: 'id'
+            model: USER_TABLE,
+            as: USER_MODEL,
+            key: KEY_ID
         }
     }
 }, { sequelize });
 
 const User = require('./User');
 
-Car.belongsTo(User, { foreignKey: 'user_id' });
+Car.belongsTo(User, { foreignKey: FOREIGN_USER_ID });
 
 module.exports = Car;
