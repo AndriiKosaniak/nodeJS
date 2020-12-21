@@ -1,7 +1,7 @@
 const { Car } = require('../../dataBase/models');
 
 module.exports = {
-    getAllCars: () => Car.findAll(),
+    getAllCars: () => Car.findAll({ limit: 10 }),
 
     getCarById: (id) => Car.findOne({
         where: id

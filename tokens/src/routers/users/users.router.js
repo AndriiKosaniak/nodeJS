@@ -8,6 +8,6 @@ const usersRouter = Router();
 usersRouter.get('/', usersController.getUsers);
 usersRouter.get('/:id', usersController.getUserById);
 usersRouter.put('/:id', checkAccessToken, validateUser.userUpdateValidator, checkEmailAvailability, usersController.updateUser);
-usersRouter.delete('/', checkAccessToken, usersController.deleteUser);
+usersRouter.delete('/:id', checkAccessToken, usersController.deleteUser);
 
 module.exports = usersRouter;

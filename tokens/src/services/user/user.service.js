@@ -2,7 +2,7 @@ const { User } = require('../../dataBase/models');
 
 module.exports = {
 
-    getUsers: () => User.findAll(),
+    getUsers: () => User.findAll({ limit: 10 }),
 
     getUserByParams: (params) => User.findAll({
         where: {
@@ -19,7 +19,7 @@ module.exports = {
         { where: { id } }
     ),
 
-    deleteUser: (user) => User.destroy({
-        where: { ...user }
+    deleteUser: (id) => User.destroy({
+        where: id
     })
 };

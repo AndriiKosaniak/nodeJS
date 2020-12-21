@@ -39,9 +39,9 @@ const userController = {
 
     deleteUser: async (req, res, next) => {
         try {
-            const user = req.body;
+            const { id } = req.params;
 
-            await userService.deleteUser(user);
+            await userService.deleteUser(id);
 
             res.status(NOT_CONTENT);
         } catch (e) {
