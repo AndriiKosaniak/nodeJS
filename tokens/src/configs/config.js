@@ -16,5 +16,6 @@ module.exports = {
     FOREIGN_USER_ID: process.env.FOREIGN_USER_ID,
     KEY_ID: process.env.KEY_ID,
     ACCESS_EXPIRATION: process.env.ACCESS_EXPIRATION,
-    REFRESH_EXPIRATION: process.env.REFRESH_EXPIRATION
+    REFRESH_EXPIRATION: process.env.REFRESH_EXPIRATION,
+    HASH_SALT: process.env.HASH_SALT
 };
