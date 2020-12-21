@@ -14,5 +14,7 @@ module.exports = {
     OAUTH_TABLE: process.env.OAUTH_TABLE,
     OAUTH_MODEL: process.env.OAUTH_MODEL,
     FOREIGN_USER_ID: process.env.FOREIGN_USER_ID,
-    KEY_ID: process.env.KEY_ID
+    KEY_ID: process.env.KEY_ID,
+    ACCESS_EXPIRATION: process.env.ACCESS_EXPIRATION,
+    REFRESH_EXPIRATION: process.env.REFRESH_EXPIRATION
 };
