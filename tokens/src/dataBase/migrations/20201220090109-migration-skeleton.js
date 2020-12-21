@@ -1,6 +1,12 @@
+const {
+    config: {
+        USER_TABLE, USER_MODEL, KEY_ID, CAR_TABLE, OAUTH_TABLE
+    }
+} = require('../../configs');
+
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable('Users', {
+        await queryInterface.createTable(USER_TABLE, {
             id: {
                 type: Sequelize.DataTypes.INTEGER,
                 primaryKey: true,
@@ -21,7 +27,7 @@ module.exports = {
             }
         });
 
-        await queryInterface.createTable('Cars', {
+        await queryInterface.createTable(CAR_TABLE, {
             id: {
                 type: Sequelize.DataTypes.INTEGER,
                 primaryKey: true,
@@ -36,14 +42,14 @@ module.exports = {
                 allowNull: false,
                 foreignKey: true,
                 reference: {
-                    model: 'Users',
-                    as: 'User',
-                    key: 'id'
+                    model: USER_TABLE,
+                    as: USER_MODEL,
+                    key: KEY_ID
                 }
             }
         });
 
-        await queryInterface.createTable('OAuths', {
+        await queryInterface.createTable(OAUTH_TABLE, {
             id: {
                 type: Sequelize.DataTypes.INTEGER,
                 primaryKey: true,
@@ -62,17 +68,17 @@ module.exports = {
                 type: Sequelize.DataTypes.INTEGER,
                 foreignKey: true,
                 reference: {
-                    model: 'Users',
-                    as: 'User',
-                    key: 'id'
+                    model: USER_TABLE,
+                    as: USER_MODEL,
+                    key: KEY_ID
                 }
             }
         });
     },
 
     down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable('Users');
-        await queryInterface.dropTable('Cars');
-        await queryInterface.dropTable('OAuth');
+        await queryInterface.dropTable(USER_TABLE);
+        await queryInterface.dropTable(CAR_TABLE);
+        await queryInterface.dropTable(OAUTH_TABLE);
     }
 };
