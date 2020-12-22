@@ -3,6 +3,7 @@ const { responseCodes: { OK, NOT_CONTENT } } = require('../../configs');
 const { tokenizer } = require('../../helpers');
 const { passwordHelper: { hash } } = require('../../helpers');
 const { oauthService } = require('../../services');
+const { constants: { AUTHORIZATION } } = require('../../configs');
 
 const authController = {
 
@@ -35,7 +36,7 @@ const authController = {
 
     logoutUser: async (req, res, next) => {
         try {
-            const token = req.get('Authorization');
+            const token = req.get(AUTHORIZATION);
 
             await oauthService.deleteToken(token);
 
@@ -47,7 +48,7 @@ const authController = {
 
     refreshToken: async (req, res, next) => {
         try {
-            const token = req.get('Authorization');
+            const token = req.get(AUTHORIZATION);
 
             await oauthService.deleteToken(token);
 

@@ -2,10 +2,11 @@ const jwt = require('jsonwebtoken');
 const { ErrorHandler, errors: { NOT_VALID_TOKEN, PERMISSION_DENIED } } = require('../errors');
 const { config: { REFRESH_KEY } } = require('../configs');
 const { oauthService } = require('../services');
+const { constants: { AUTHORIZATION } } = require('../configs');
 
 module.exports = async (req, res, next) => {
     try {
-        const token = req.get('Authorization');
+        const token = req.get(AUTHORIZATION);
 
         if (!token) {
             throw new ErrorHandler(NOT_VALID_TOKEN.message, NOT_VALID_TOKEN.code);
