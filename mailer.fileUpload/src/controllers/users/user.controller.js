@@ -1,5 +1,5 @@
 const path = require('path');
-const uuid = require('uuid');
+const uuid = require('uuid').v1();
 const fs = require('fs-extra');
 const { passwordHelper } = require('../../helpers');
 const { userService } = require('../../services');

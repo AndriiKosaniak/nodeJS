@@ -1,5 +1,5 @@
 const path = require('path');
-const uuid = require('uuid');
+const uuid = require('uuid').v1();
 const fs = require('fs-extra');
 const { carService } = require('../../services');
 const { constants: { DOCUMENT_TYPE, PHOTO_TYPE }, responseCodes: { NOT_CONTENT, OK } } = require('../../configs');
