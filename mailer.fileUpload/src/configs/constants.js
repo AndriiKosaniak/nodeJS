@@ -7,8 +7,9 @@ module.exports = {
     WELCOME_TEMPLATE: 'welcome',
     DELETE_TEMPLATE: 'delete',
     TEMPLATES_PATH: path.join(process.cwd(), 'email-templates'),
+    PUBLIC_PATH: path.join(process.cwd(), 'public'),
     PHOTO_MAX_SIZE: 10 * 1024 * 1024,
-    FILE_MAX_SIZE: 20 * 1024 * 1024,
+    DOC_MAX_SIZE: 20 * 1024 * 1024,
     PHOTOS_MIMETYPES: [
         'image/gif',
         'image/jpeg',
@@ -16,7 +17,6 @@ module.exports = {
         'image/png',
         'image/tiff',
         'image/webp',
-        'image/bmp'
     ],
     DOCS_MIMETYPES: [
         'application/msword',

@@ -16,7 +16,11 @@ module.exports = {
 
     updateUser: (id, newData) => User.update(
         { ...newData },
-        { where: { id } }
+        {
+            where: { id },
+            returning: true,
+            plain: true
+        },
     ),
 
     deleteUser: (id) => User.destroy({

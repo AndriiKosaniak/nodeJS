@@ -4,13 +4,14 @@ require('dotenv').config();
 const { usersRouter, authRouter, carsRouter } = require('./routers');
 const { sequelize } = require('./dataBase/index');
 
-const { config: { APP_PORT } } = require('./configs');
+const { config: { APP_PORT }, constants: { PUBLIC_PATH } } = require('./configs');
 
 const app = express();
 
 app.use(fileUpload());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(PUBLIC_PATH));
 
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);

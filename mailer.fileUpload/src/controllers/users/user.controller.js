@@ -1,3 +1,7 @@
+const path = require('path');
+const uuid = require('uuid');
+const fs = require('fs-extra');
+const { passwordHelper } = require('../../helpers');
 const { userService } = require('../../services');
 const { responseCodes: { OK, NOT_CONTENT } } = require('../../configs');
 const { emailService } = require('../../services');
@@ -28,10 +32,24 @@ const userController = {
 
     updateUser: async (req, res, next) => {
         try {
-            const { id } = req.params;
-            const newData = req.body;
+            const { avatar, params: { id }, body: { newData } } = req;
+
+            await passwordHelper.hash(newData.password);
 
             await userService.updateUser(id, newData);
+
+            if (avatar) {
+                const pathWithoutPublic = path.join('user', `${id}`, 'photos');
+                const photoDir = path.join(process.cwd(), 'public', pathWithoutPublic);
+                const fileExt = avatar.name.split('.').pop();
+                const photoName = `${uuid}.${fileExt}`;
+                const finalPhotoPath = path.join(pathWithoutPublic, photoName);
+
+                await fs.mkdir(photoDir, { recursive: true });
+                await avatar.mv(path.join(photoDir, photoName));
+
+                await userService.updateUser(id, { avatar: finalPhotoPath });
+            }
 
             res.status(OK).json('Updated successfully');
         } catch (e) {

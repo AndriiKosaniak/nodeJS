@@ -1,4 +1,7 @@
-const { authService, emailService } = require('../../services');
+const path = require('path');
+const uuid = require('uuid');
+const fs = require('fs-extra');
+const { authService, emailService, userService } = require('../../services');
 const { responseCodes: { OK, NOT_CONTENT } } = require('../../configs');
 const { tokenizer } = require('../../helpers');
 const { emailActions: { WELCOME } } = require('../../configs');
@@ -10,13 +13,27 @@ const authController = {
 
     registerUser: async (req, res, next) => {
         try {
-            const { username, password, email } = req.body;
+            const { avatar, body: { username, password, email } } = req;
+
             const hashedPassword = await hash(password);
 
             Object.assign(req.body, { password: hashedPassword });
             const user = await authService.createUser(req.body);
 
             await emailService.sendMail(email, WELCOME, { userName: username });
+
+            if (avatar) {
+                const pathWithoutPublic = path.join('user', `${user.id}`, 'photos');
+                const photoDir = path.join(process.cwd(), 'public', pathWithoutPublic);
+                const fileExt = avatar.name.split('.').pop();
+                const photoName = `${uuid}.${fileExt}`;
+                const finalPhotoPath = path.join(pathWithoutPublic, photoName);
+
+                await fs.mkdir(photoDir, { recursive: true });
+                await avatar.mv(path.join(photoDir, photoName));
+
+                await userService.updateUser(user.id, { avatar: finalPhotoPath });
+            }
 
             res.json(user);
         } catch (e) {

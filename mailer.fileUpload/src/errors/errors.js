@@ -37,5 +37,17 @@ module.exports = {
     WRONG_TEMPLATE: {
         message: 'Template is not found',
         code: NOT_FOUND
+    },
+    TOO_BIG_FILE: {
+        message: 'The uploaded file is too big',
+        code: BAD_REQUEST
+    },
+    WRONG_FILE_EXTENSION: {
+        message: 'Wrong file extension',
+        code: BAD_REQUEST
+    },
+    JUST_ONE_PHOTO: {
+        message: 'Avatar should be only one photo',
+        code: BAD_REQUEST
     }
 };

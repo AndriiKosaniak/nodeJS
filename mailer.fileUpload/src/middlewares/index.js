@@ -5,5 +5,6 @@ module.exports = {
     checkUserCredentials: require('./check-user-credentials'),
     checkAccessToken: require('./check-access-token'),
     checkRefreshToken: require('./check-refresh-token'),
-    checkFile: require('./check-file')
+    checkFile: require('./check-file'),
+    checkAvatar: require('./check-avatar')
 };
