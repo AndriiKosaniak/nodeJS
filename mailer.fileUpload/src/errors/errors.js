@@ -49,5 +49,13 @@ module.exports = {
     JUST_ONE_PHOTO: {
         message: 'Avatar should be only one photo',
         code: BAD_REQUEST
+    },
+    TOO_MANY_CAR_PHOTOS: {
+        message: 'There should be not more than 10 photos',
+        code: BAD_REQUEST
+    },
+    TOO_MANY_CAR_DOCS: {
+        message: 'There should be not more than 10 docs',
+        code: BAD_REQUEST
     }
 };

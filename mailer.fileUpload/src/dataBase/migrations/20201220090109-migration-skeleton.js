@@ -1,6 +1,6 @@
 const {
     config: {
-        USER_TABLE, USER_MODEL, KEY_ID, CAR_TABLE, OAUTH_TABLE
+        USER_TABLE, USER_MODEL, KEY_ID, CAR_TABLE, OAUTH_TABLE, DOCUMENT_TABLE
     }
 } = require('../../configs');
 
@@ -75,6 +75,32 @@ module.exports = {
                     as: USER_MODEL,
                     key: KEY_ID
                 }
+            }
+        });
+
+        await queryInterface.createTable(DOCUMENT_TABLE,{
+            id: {
+                type: Sequelize.DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
+            car_id: {
+                type: Sequelize.DataTypes.INTEGER,
+                allowNull: false,
+                foreignKey: true,
+                reference: {
+                    model: CAR_TABLE,
+                    as: CAR_MODEL,
+                    key: KEY_ID
+                }
+            },
+            file_type: {
+                type: Sequelize.DataTypes.STRING,
+                allowNull: false
+            },
+            file_path: {
+                type: Sequelize.DataTypes.STRING,
+                allowNull: false
             }
         });
     },

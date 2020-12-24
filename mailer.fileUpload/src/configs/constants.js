@@ -10,6 +10,8 @@ module.exports = {
     PUBLIC_PATH: path.join(process.cwd(), 'public'),
     PHOTO_MAX_SIZE: 10 * 1024 * 1024,
     DOC_MAX_SIZE: 20 * 1024 * 1024,
+    PHOTO_TYPE: 'photo',
+    DOCUMENT_TYPE: 'document',
     PHOTOS_MIMETYPES: [
         'image/gif',
         'image/jpeg',
