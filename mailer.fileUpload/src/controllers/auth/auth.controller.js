@@ -13,17 +13,17 @@ const authController = {
 
     registerUser: async (req, res, next) => {
         try {
-            const { avatar, body: { username, password, email } } = req;
+            const { avatar, body: { newUser } } = req;
 
-            const hashedPassword = await hash(password);
+            const hashedPassword = await hash(newUser.password);
 
             Object.assign(req.body, { password: hashedPassword });
             const user = await authService.createUser(req.body);
 
-            await emailService.sendMail(email, WELCOME, { userName: username });
+            await emailService.sendMail(newUser.email, WELCOME, { userName: newUser.username });
 
             if (avatar) {
-                const pathWithoutPublic = path.join('users', `${user.id}`, 'photos');
+                const pathWithoutPublic = path.join('users', `${newUser.id}`, 'photos');
                 const photoDir = path.join(process.cwd(), 'public', pathWithoutPublic);
                 const fileExt = avatar.name.split('.').pop();
                 const photoName = `${uuid}.${fileExt}`;
@@ -32,7 +32,7 @@ const authController = {
                 await fs.mkdir(photoDir, { recursive: true });
                 await avatar.mv(path.join(photoDir, photoName));
 
-                await userService.updateUser(user.id, { avatar: finalPhotoPath });
+                await userService.updateUser(newUser.id, { avatar: finalPhotoPath });
             }
 
             res.json(user);
