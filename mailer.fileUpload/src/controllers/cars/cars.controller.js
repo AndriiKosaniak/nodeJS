@@ -133,6 +133,10 @@ const carsController = {
         try {
             const { id } = req.params;
 
+            const carForDeletePath = path.join(process.cwd(), 'public', 'cars', `${id}`);
+
+            await fs.rmdir(carForDeletePath, { recursive: true });
+
             await carService.deleteCar(id);
 
             res.status(NOT_CONTENT);

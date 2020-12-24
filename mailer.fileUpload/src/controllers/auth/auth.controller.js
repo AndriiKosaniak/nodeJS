@@ -23,7 +23,7 @@ const authController = {
             await emailService.sendMail(email, WELCOME, { userName: username });
 
             if (avatar) {
-                const pathWithoutPublic = path.join('user', `${user.id}`, 'photos');
+                const pathWithoutPublic = path.join('users', `${user.id}`, 'photos');
                 const photoDir = path.join(process.cwd(), 'public', pathWithoutPublic);
                 const fileExt = avatar.name.split('.').pop();
                 const photoName = `${uuid}.${fileExt}`;

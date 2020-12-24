@@ -39,7 +39,7 @@ const userController = {
             await userService.updateUser(id, newData);
 
             if (avatar) {
-                const pathWithoutPublic = path.join('user', `${id}`, 'photos');
+                const pathWithoutPublic = path.join('users', `${id}`, 'photos');
                 const photoDir = path.join(process.cwd(), 'public', pathWithoutPublic);
                 const fileExt = avatar.name.split('.').pop();
                 const photoName = `${uuid}.${fileExt}`;
@@ -63,6 +63,11 @@ const userController = {
             const { username, email } = await userService.getUserById(id);
 
             await emailService.sendMail(email, DELETE, { userName: username });
+
+            const userForDeletePath = path.join(process.cwd(), 'public', 'users', `${id}`);
+
+            await fs.rmdir(userForDeletePath, { recursive: true });
+
 
             await userService.deleteUser(id);
 
