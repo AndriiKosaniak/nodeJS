@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
         }
 
         [req.avatar] = req.photos;
-
+        console.log(req.photos);
         next();
     } catch (e) {
         next(e);
