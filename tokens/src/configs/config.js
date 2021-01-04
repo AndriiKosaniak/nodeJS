@@ -1,6 +1,7 @@
 module.exports = {
     ACCESS_KEY: process.env.ACCESS_KEY,
     REFRESH_KEY: process.env.REFRESH_KEY,
+    DB_HOST: process.env.DB_HOST,
     DB_DIALECT: process.env.DB_DIALECT,
     DB_NAME: process.env.DB_NAME,
     DB_USERNAME: process.env.DB_USERNAME,
