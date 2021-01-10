@@ -1,13 +1,14 @@
 const path = require('path');
 const uuid = require('uuid').v1();
 const fs = require('fs-extra');
-const { authService, emailService, userService } = require('../../services');
+const {
+    authService, emailService, userService, oauthService, logService
+} = require('../../services');
 const { responseCodes: { OK, NOT_CONTENT } } = require('../../configs');
 const { tokenizer } = require('../../helpers');
 const { emailActions: { WELCOME } } = require('../../configs');
 const { passwordHelper: { hash } } = require('../../helpers');
-const { oauthService } = require('../../services');
-const { constants: { AUTHORIZATION } } = require('../../configs');
+const { constants: { AUTHORIZATION, USER_CREATED } } = require('../../configs');
 const transactionInstance = require('../../dataBase/create-transaction');
 
 const authController = {
@@ -34,7 +35,10 @@ const authController = {
 
                 await userService.updateUser(user.id, { avatar: finalPhotoPath }, t);
             }
+
             await emailService.sendMail(email, WELCOME, { userName: username });
+            await logService.createLog({ userId: user.id, action: USER_CREATED });
+
             await t.commit();
 
             res.json(user);

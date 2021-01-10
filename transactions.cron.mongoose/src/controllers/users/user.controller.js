@@ -2,10 +2,10 @@ const path = require('path');
 const uuid = require('uuid').v1();
 const fs = require('fs-extra');
 const { passwordHelper } = require('../../helpers');
-const { userService } = require('../../services');
+const { userService, emailService, logService } = require('../../services');
 const { responseCodes: { OK, NOT_CONTENT } } = require('../../configs');
-const { emailService } = require('../../services');
 const { emailActions: { DELETE } } = require('../../configs');
+const { USER_UPDATED, USER_DELETED } = require('../../configs/constants');
 const transactionInstance = require('../../dataBase/create-transaction');
 
 const userController = {
@@ -52,12 +52,16 @@ const userController = {
                 await avatar.mv(path.join(photoDir, photoName));
 
                 await userService.updateUser(id, { avatar: finalPhotoPath }, t);
-                await t.commit();
             }
-            await t.rollback();
+
+            await logService.createLog({ userId: id, action: USER_UPDATED });
+
+            await t.commit();
 
             res.status(OK);
         } catch (e) {
+            await t.rollback();
+
             next(e);
         }
     },
@@ -75,7 +79,9 @@ const userController = {
 
             await fs.rmdir(userForDeletePath, { recursive: true });
 
+            await logService.createLog({ userId: id, action: USER_DELETED });
             await userService.deleteUser(id, t);
+
             await t.commit();
 
             res.status(NOT_CONTENT);

@@ -38,7 +38,7 @@ sequelize.sync({ alter: false })
 
 // eslint-disable-next-line no-underscore-dangle,no-unused-vars
 function _connectDB() {
-    mongoose.connect('mongodb://localhost:27017/shop', { useNewUrlParser: true });
+    mongoose.connect('mongodb://localhost:27017/DB', { useNewUrlParser: true });
     const connect = mongoose.connection;
 
     connect.on('error', (error) => {

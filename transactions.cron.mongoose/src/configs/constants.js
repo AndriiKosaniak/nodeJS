@@ -12,6 +12,11 @@ module.exports = {
     DOC_MAX_SIZE: 20 * 1024 * 1024,
     PHOTO_TYPE: 'photo',
     DOCUMENT_TYPE: 'document',
+    USER_CREATED: 'Created',
+    USER_UPDATED: 'Updated',
+    USER_DELETED: 'Deleted',
+    MONTH: 1000 * 60 * 60 * 24 * 30,
+    CRON_SCHEDULE: '0 0 * * *',
     PHOTOS_MIMETYPES: [
         'image/gif',
         'image/jpeg',
